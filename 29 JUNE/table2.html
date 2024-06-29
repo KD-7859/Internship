@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table><th colspan="6">Data table</th></table>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Disability Category</th>
+                <th rowspan="2">Participants</th>
+                <th colspan="2">Ballots</th>
+                <th colspan="2">Results</th>
+            </tr>
+            <tr>
+                <th>Completed</th>
+                <th>Incomplete/Terminated</th>
+                <th>Accuracy</th>
+                <th>Time to Complete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Blind</td>
+                <td>5</td>
+                <td>1</td>
+                <td>4</td>
+                <td>11.5%, n=1</td>
+                <td>1000 sec, n=1</td>
+            </tr>
+            <tr>
+                <td>Low vision</td>
+                <td>5</td>
+                <td>2</td>
+                <td>3</td>
+                <td>98.3%, n=2<br>(97.7%, n=3)</td>
+                <td>1716 sec, n=2<br>(1900 sec, n=4)</td>
+            </tr>
+            <tr>
+                <td>Dexterity</td>
+                <td>5</td>
+                <td>4</td>
+                <td>1</td>
+                <td>98.3%, n=4</td>
+                <td>1215 sec, n=3</td>
+            </tr>
+            <tr>
+                <td>Mobility</td>
+                <td>3</td>
+                <td>3</td>
+                <td>0</td>
+                <td>95.4%, n=2</td>
+                <td>1400 sec, n=2</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
