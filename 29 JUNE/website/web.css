@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-size: 16px;
+}
+
+.main, .EDUCATION {
+    width: 100%;
+    background: url('bg100.png');
+    min-height: 100vh;
+    position: relative;
+    padding: 20px;
+}
+.info, .sr {
+    margin-top: 40px;
+}
+
+.info h1, .sr h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.b span {
+    color: #00fff2;
+}
+
+.info h2, .sr h2 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.info a {
+    text-decoration: none;
+    background: #59D5E0;
+    margin: 26px 0;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: .4s ease;
+}
+
+.info h5 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.info a:hover {
+    background: rgb(59,174,209);
+}
+
+.image {
+    width: 100%;
+    max-width: 300px;
+    margin: 40px auto;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s;
+}
+
+.image:hover .Photo {
+    transform: scale(1.05);
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.icons a {
+    text-decoration: none;
+    color: #59D5E0;
+    margin: 0 10px;
+}
+
+.icons ion-icon {
+    font-size: 2rem;
+    color: #2D9596;
+    transition: .4s ease;
+}
+
+.icons ion-icon:hover {
+    color: rgb(59,174,209);
+}
+
+.sr h1 {
+    color: #00fff2;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .navbar .logo {
+        width: 80px;
+        height: 100px;
+
+    }
+
+    .info h1, .sr h1 {
+        font-size: 3rem;
+    }
+
+    .info h2, .sr h2 {
+        font-size: 1.2rem;
+    }
+
+    ul {
+        margin-top: 0;
+    }
+
+    .image {
+        position: absolute;
+        right: 50px;
+        bottom: 10%;
+        margin: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 20px;
+    }
+
+    .navbar .logo {
+        width: 100px;
+        height: 100px;
+        margin-left: 50%;
+    }
+
+    .info h1, .sr h1 {
+        font-size: 3.5rem;
+    }
+
+    .info h2, .sr h2 {
+        font-size: 1.3rem;
+    }
+
+    .image {
+        max-width: 400px;
+    }
+}
