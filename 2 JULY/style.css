@@ -505,7 +505,8 @@ p {
 
   .contact-body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'poppins',sans-serif;
+    font: bold;
     background-color: #e6f1ff;
     z-index: 10;
     margin-top: 3%;
@@ -558,4 +559,20 @@ p {
 
 .contact-button:hover {
     background-color: #0041cc;
+}
+
+.footer-content {
+  background-color: #333333;
+  color: white;
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3%;
+  font-family: Arial, sans-serif;
+}
+
+
+.copyright {
+  font-size: 0.9em;
 }
