@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+        emailjs.init("uxvlYDUOf_0ll0sq-");
+    })();
+</script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#home"><img src="final logo.png" alt="Company Logo"></a>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#map">Service Map</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <button class="sign-in-btn">Sign in</button>
+        </nav>
+    </header><br><br><br>
+
+    <main>
+        <section class="Home" id="home">
+            <div class="Home-content">
+                <h1>
+                    <span class="content">Providing Industry Leading</span><br>
+                    <span class="content">Solutions for</span>
+                </h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant cras morbi hendrerit nunc vel sapien. In habitasse at diam suspendisse non vitae fermentum, pharetra arcu. Viverra a morbi ut donec in. Ac diam, at sed cras nisi.</p>
+                <br><button class="learn-more-btn">Learn More →</button>
+            </div>
+            <div class="company-img">
+                <img src="bro.png" alt="Business presentation illustration">
+            </div>
+        </section>
+    </main>
+        <section class="about-company" id="about">
+            <div class="about-container">
+              <div class="about-title">
+                <h2>About <br>Company</h2>
+              </div>
+              <div class="about-content">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget 
+                  duis mi nunc bibendum. Tellus elementum nec lorem eget 
+                  dictumst. Risus in gravida eu, enim lorem. Sed consequat ut 
+                  suspendisse eros. Nunc nunc accumsan, viverra enim. Mi.
+                </p>
+              </div>
+            </div>
+          </section>
+            <section class="our-services" id="services">
+                <h2>Our Services</h2>
+                
+                <div class="service-card">
+                  <div class="service-content">
+                    <h3>Non-IT enterprises</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat bibendum sit felis, sollicitudin et. Nulla aliquet integer hac ac morbi.</p>
+                    <a href="#" class="trn-learn-more">Learn More →</a>
+                  </div>
+                  <div class="service-image-1">
+                    <img src="Group 6.png" alt="Non-IT enterprises">
+                  </div>
+                </div>
+              
+                <div class="service-card-2">
+                  <div class="service-image-2">
+                    <img src="Group 5.png" alt="Software product companies">
+                  </div>
+                  <div class="service-content">
+                    <h3>Software product companies</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</p>
+                    <a href="#" class="trn-learn-more">Learn More →</a>
+                  </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-content">
+                      <h3>Non-IT enterprises</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat bibendum sit felis, sollicitudin et. Nulla aliquet integer hac ac morbi.</p>
+                      <a href="#" class="trn-learn-more">Learn More →</a>
+                    </div>
+                    <div class="service-image-1">
+                      <img src="Group 6.png" alt="Non-IT enterprises">
+                    </div>
+                  </div>
+                
+              </section>
+
+              <section class="service-map" id="map">
+                <h2>Service Map</h2>
+                
+                <div class="service-item">
+                  <h3>IT consulting</h3>
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                  </ul>
+                </div>
+              
+                <div class="service-item">
+                  <h3>Software<br>Development</h3>
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                  </ul>
+                </div>
+              
+                <div class="service-item">
+                  <h3>Testing and QA</h3>
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit viverra porta tortor, elementum ultrices. Blandit quam nec aliquam.</li>
+                  </ul>
+                </div>
+              
+                <div class="view-all">
+                  <a href="#" class="view-all-link">View All Services</a>
+                </div>
+              </section>
+
+
+              <section class="contact-us" id="contact">
+                <h2>Contact Us</h2>
+                <form id="contactForm" onsubmit="return SendMail(event)">
+                  <input class="input" type="text" id="name" placeholder="Full Name" required>
+                  <input class="input" type="email" id="email_id" placeholder="Email Address" required>
+                  <input class="input" type="tel" id="phone_no" placeholder="Phone Number">
+                  <textarea class="input" id="message" placeholder="Have anything to say?"></textarea>
+                  <button type="submit" class="btn input">Send</button>
+              </form>
+                <div class="bubble bubble-1"></div>
+                <div class="bubble bubble-2"></div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                  <span class="company-name">Company Name</span>
+                  <span class="copyright">Company © 2022 All Rights Reserved</span>
+                </div>
+              </footer>
+</body>
+</html>

@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    line-height: 1.6;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color:    #F9F9F9;
+    padding: 20px 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sign-in-btn {
+    border: 2px solid #FFC1DC;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.Home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 5%;
+}
+
+.Home-content {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.Home-content p {
+    max-width: 583px;
+}
+
+.Home-content .content {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, rgba(0,72,255,1) 6%, rgba(214,0,141,1) 100%);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+}
+
+.learn-more-btn {
+    padding: 10px 30px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, rgba(9,21,63,1) 6%, rgba(0,43,194,1) 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.company-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about-company {
+    background-color: #F5F8FF;
+    margin: 40px 5%;
+    padding: 20px;
+    border-radius: 40vh 0 0 40vh;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    margin: 0 0 0 -1.5rem;
+    border-radius: 40vh 0 0 40vh;
+}
+
+.about-title h2 {
+    color: #0066cc;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.about-content {
+    flex: 2;
+    padding: 20px;
+}
+
+.about-content p {
+    font-size: 1.3rem;
+    color: #222222;
+}
+
+.our-services {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%;
+}
+
+.our-services h2 {
+    text-align: center;
+    color: #0066cc;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.service-card, .service-card-2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 50px;
+}
+
+.service-card {
+    background: #FFF5FF;
+    border-radius: 0 40vh 40vh 0;
+}
+
+.service-card-2 {
+    background: #F5F8FF;
+    border-radius: 40vh 0 0 40vh;
+    flex-direction: row-reverse;
+}
+
+.service-content {
+    flex: 1;
+    padding: 0 30px;
+}
+
+.service-content h3 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.service-content p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.trn-learn-more {
+    display: inline-block;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #0066cc;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.service-image-1, .service-image-2 {
+    flex: 1;
+    text-align: center;
+}
+
+.service-image-1 img, .service-image-2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.service-map {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%;
+}
+
+.service-map h2 {
+    text-align: center;
+    color: #0066cc;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.service-item {
+    background-color: #f8f8f8;
+    padding: 30px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    color: #0066cc;
+    font-size: 1.2rem;
+    padding-top: 40px;
+    margin-right: 30px;
+    min-width: 150px;
+}
+
+.service-item ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.service-item li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.service-item li:before {
+    content: "•";
+    color: #0066cc;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-all-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-us {
+    margin: 10% 5%;
+    background-color: #e6f2ff;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-us h2 {
+    color: #0066cc;
+    text-align: center;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.texta {
+    height: 100px;
+    resize: vertical;
+}
+
+.btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    padding: 15px 5%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-name {
+    margin: 0 0 0 -5%;
+}
+
+.copyright {
+    margin: 0 23rem;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .Home {
+        flex-direction: column;
+        padding: 30px 5%;
+    }
+
+    .Home-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .about-company{
+        border-radius: 40vh 40vh 0 0;
+    }
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-title {
+        flex: none;
+        width: 80%;
+        height: auto;
+        margin-top: 2rem;
+        border-radius: 40vh 40vh 0 0;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .about-content p {
+        padding-left: 0;
+    }
+
+    .service-card, .service-card-2 {
+        flex-direction: column;
+        border-radius: 50px;
+    }
+
+    .service-content {
+        padding: 20px 0;
+    }
+
+    .service-item {
+        flex-direction: column;
+    }
+
+    .service-item h3 {
+        margin-right: 0;
+        margin-bottom: 15px;
+        padding-top: 0;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .company-name {
+        margin-left: -100px;
+        margin-bottom: 10px;
+    }
+
+    .copyright {
+        margin-right: 10%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    .Home-content .content {
+        font-size: 2rem;
+    }
+    .footer-content .company-name{
+        margin: 0 0 0 10px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+.contact-us {
+    background-color: #e6f2ff;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-us h2 {
+    color: #0066cc;
+    text-align: center;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    z-index: 8;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bubble {
+    position: absolute;
+    background-color: #c8e1ff;
+    border-radius: 50%;
+}
+
+.bubble-1 {
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    left: -20px;
+    z-index: 4  ;
+}
+
+.bubble-2 {
+    width: 150px;
+    height: 150px;
+    bottom: -40px;
+    right: -40px;
+}
+
+.input{
+    z-index: 5;
+}
