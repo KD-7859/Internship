@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+#level-selector {
+    margin-bottom: 20px;
+}
+
+.level-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.level-button:hover {
+    background: linear-gradient(135deg, #5b76e5, #9565cf);
+}
+
+#text-display {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: left;
+    white-space: pre-wrap;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+#text-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 10px;
+    transition: border 0.3s;
+}
+
+#text-input:focus {
+    border-color: #6e8efb;
+}
+
+#progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    height: 10px;
+    background-color: #4caf50;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+#result {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#result p {
+    margin: 5px 0;
+    flex: 1 1 45%;
+}
+
+#error {
+    color: red;
+}
+
+#reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#reset-button:hover {
+    background-color: #45a049;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.detailed-stats {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.detailed-stats p {
+    margin: 5px 0;
+    flex: 1 1 45%;
+}

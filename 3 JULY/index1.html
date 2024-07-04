@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Typing Tutor</title>
+    <style>
+        /* Existing styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        #text-display {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            min-height: 6rem;
+            text-align: left;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            white-space: pre-wrap;
+            position: relative;
+        }
+        #input-field, #timer-input, #difficulty-select {
+            font-size: 1.2rem;
+            padding: 0.7rem;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+            width: calc(100% - 1.4rem);
+        }
+        #input-field:focus, #timer-input:focus, #difficulty-select:focus {
+            outline: none;
+            border-color: #2980b9;
+        }
+        #timer-input {
+            width: 120px;
+            margin-right: 10px;
+        }
+        #difficulty-select {
+            width: 150px;
+        }
+        #timer-input:disabled {
+            background-color: #e0e0e0;
+            cursor: not-allowed;
+        }
+        #stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            background-color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .stat {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 5px;
+            color: #34495e;
+        }
+        .correct { color: #27ae60; }
+        .incorrect { color: #e74c3c; text-decoration: underline; }
+        button {
+            font-size: 1.2rem;
+            padding: 0.7rem 1.2rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            margin: 0 5px;
+        }
+        button:hover { background-color: #2980b9; transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+        #message {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .progress-bar-container {
+            margin: 1rem 0;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .keyboard {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .key {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            border-radius: 5px;
+            background-color: #ddd;
+            color: #333;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .key.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .key.special {
+            width: 60px;
+        }
+        .high-scores {
+            margin-top: 1rem;
+            background-color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .high-scores h2 {
+            margin: 0 0 1rem;
+            color: #2c3e50;
+        }
+        .high-scores ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .high-scores li {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Modern Typing Tutor</h1>
+        <div>
+            <input type="number" id="timer-input" min="10" max="300" value="60" placeholder="Seconds">
+            <select id="difficulty-select">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button id="start-button">Start</button>
+            <button id="stop-button" style="display: none;">Stop</button>
+            <button id="restart-button" style="display: none;">Restart</button>
+        </div>
+        <div id="text-display"></div>
+        <input type="text" id="input-field" placeholder="Start typing..." autocomplete="off" disabled>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div id="stats">
+            <div class="stat">Time: <span id="timer">0</span>s</div>
+            <div class="stat">WPM: <span id="wpm">0</span></div>
+            <div class="stat">Accuracy: <span id="accuracy">100%</span></div>
+            <div class="stat">Errors: <span id="errors">0</span></div>
+        </div>
+        <div id="message"></div>
+        <div class="high-scores" id="high-scores">
+            <h2>High Scores</h2>
+            <ul id="score-list">
+                <!-- High scores will be displayed here -->
+            </ul>
+        </div>
+
+        <!-- Keyboard section -->
+        <div class="keyboard">
+            <div class="key special">Q</div>
+            <div class="key special">W</div>
+            <div class="key special">E</div>
+            <div class="key special">R</div>
+            <div class="key special">T</div>
+            <div class="key special">Y</div>
+            <div class="key special">U</div>
+            <div class="key special">I</div>
+            <div class="key special">O</div>
+            <div class="key special">P</div>
+            <div class="key special">A</div>
+            <div class="key special">S</div>
+            <div class="key special">D</div>
+            <div class="key special">F</div>
+            <div class="key special">G</div>
+            <div class="key special">H</div>
+            <div class="key special">J</div>
+            <div class="key special">K</div>
+            <div class="key special">L</div>
+            <div class="key special">Z</div>
+            <div class="key special">X</div>
+            <div class="key special">C</div>
+            <div class="key special">V</div>
+            <div class="key special">B</div>
+            <div class="key special">N</div>
+            <div class="key special">M</div>
+        </div>
+    </div>
+
+    <script>
+        const textDisplay = document.getElementById('text-display');
+        const inputField = document.getElementById('input-field');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const timerDisplay = document.getElementById('timer');
+        const errorsDisplay = document.getElementById('errors');
+        const timerInput = document.getElementById('timer-input');
+        const startButton = document.getElementById('start-button');
+        const stopButton = document.getElementById('stop-button');
+        const restartButton = document.getElementById('restart-button');
+        const messageDisplay = document.getElementById('message');
+        const progressBar = document.getElementById('progress-bar');
+        const keyboardKeys = document.querySelectorAll('.key');
+        const difficultySelect = document.getElementById('difficulty-select');
+        const scoreList = document.getElementById('score-list');
+
+        let currentText = '';
+        let nextText = '';
+        let startTime;
+        let timer;
+        let errors = 0;
+        let totalChars = 0;
+        let timeLeft = 60;
+        let timeElapsed = 0;
+        let isTestActive = false;
+        let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+        async function fetchRandomParagraph() {
+            const response = await fetch('https://api.quotable.io/random');
+            const data = await response.json();
+            return data.content;
+        }
+
+        async function preloadNextParagraph() {
+            nextText = await fetchRandomParagraph();
+        }
+
+        function setText() {
+            currentText = nextText || currentText;
+            textDisplay.innerHTML = currentText.split('').map(char => `<span>${char}</span>`).join('');
+            preloadNextParagraph();
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const textLength = currentText.length;
+            if (textLength > 0) {
+                const charsTyped = inputField.value.length;
+                const percentage = (charsTyped / textLength) * 100;
+                progressBar.style.width = `${percentage}%`;
+            } else {
+                progressBar.style.width = '0%';
+            }
+        }
+
+        function resetTest() {
+            setText();
+            inputField.value = '';
+            startTime = new Date();
+            timeElapsed = 0;  // Reset the elapsed time
+            errors = 0;
+            totalChars = 0;
+            wpmDisplay.textContent = '0';
+            accuracyDisplay.textContent = '100%';
+            errorsDisplay.textContent = '0';
+            inputField.disabled = false;
+            inputField.focus();
+            messageDisplay.style.display = 'none';
+            timerInput.disabled = false;
+            difficultySelect.disabled = false; // Enable difficulty select
+            updateProgressBar();
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = parseInt(timerInput.value);
+            timerDisplay.textContent = timeLeft;
+            isTestActive = true;
+            timerInput.disabled = true;
+            difficultySelect.disabled = true; // Disable difficulty select
+            stopButton.style.display = 'inline-block';  // Show stop button
+
+            // Update the timer every second
+            timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    timerDisplay.textContent = timeLeft;
+                    timeElapsed = (new Date() - startTime) / 1000;  // Update elapsed time in seconds
+                } else {
+                    endTest("Time's up!");
+                }
+            }, 1000);
+        }
+
+        function stopTest() {
+            clearInterval(timer);
+            isTestActive = false;
+            inputField.disabled = true;
+            startButton.style.display = 'inline-block';  // Show start button
+            stopButton.style.display = 'none';  // Hide stop button
+            restartButton.style.display = 'none';  // Hide restart button
+            messageDisplay.textContent = "Test stopped.";
+            messageDisplay.style.display = 'block';
+            inputField.value = '';
+            timerDisplay.textContent = '0';
+            wpmDisplay.textContent = '0';
+            accuracyDisplay.textContent = '100%';
+            errorsDisplay.textContent = '0';
+            progressBar.style.width = '0%';
+            difficultySelect.disabled = false; // Enable difficulty select
+        }
+
+        function calculateWPM() {
+            const wordsTyped = inputField.value.trim().split(/\s+/).length;
+            const timeInMinutes = timeElapsed / 60;
+            return Math.round(wordsTyped / timeInMinutes) || 0;
+        }
+
+        function calculateAccuracy() {
+            return Math.round(((totalChars - errors) / totalChars) * 100) || 100;
+        }
+
+        function endTest(message) {
+            clearInterval(timer);
+            isTestActive = false;
+            inputField.disabled = true;
+            startButton.style.display = 'none';
+            restartButton.style.display = 'inline-block';
+            stopButton.style.display = 'none';  // Hide stop button
+            messageDisplay.textContent = message;
+            messageDisplay.style.display = 'block';
+            saveHighScore();
+            displayHighScores();
+            difficultySelect.disabled = false; // Enable difficulty select
+        }
+
+        function highlightKeyboardKey(key) {
+            keyboardKeys.forEach((keyElement) => {
+                if (keyElement.textContent === key.toUpperCase()) {
+                    keyElement.classList.add('active');
+                } else {
+                    keyElement.classList.remove('active');
+                }
+            });
+        }
+
+        function getNextChar() {
+            const textSpans = textDisplay.querySelectorAll('span');
+            const currentInput = inputField.value;
+            const currentLength = currentInput.length;
+            return textSpans[currentLength] ? textSpans[currentLength].textContent : '';
+        }
+
+        function saveHighScore() {
+            const wpm = calculateWPM();
+            if (highScores.length < 10 || wpm > Math.min(...highScores.map(score => score.wpm))) {
+                const name = prompt("Enter your name for the high scores:");
+                if (name) {
+                    highScores.push({ name, wpm });
+                    highScores.sort((a, b) => b.wpm - a.wpm);
+                    highScores = highScores.slice(0, 10);  // Keep only top 10 scores
+                    localStorage.setItem('highScores', JSON.stringify(highScores));
+                }
+            }
+        }
+
+        function displayHighScores() {
+            scoreList.innerHTML = highScores.map(score => `<li>${score.name}: ${score.wpm} WPM</li>`).join('');
+        }
+
+        inputField.addEventListener('input', () => {
+            if (!isTestActive) return;
+
+            const currentInput = inputField.value;
+            const currentLength = currentInput.length;
+            totalChars = Math.max(totalChars, currentLength);
+
+            const textSpans = textDisplay.querySelectorAll('span');
+            let isCorrect = true;
+
+            textSpans.forEach((span, index) => {
+                if (index < currentLength) {
+                    if (span.textContent === currentInput[index]) {
+                        span.className = 'correct';
+                    } else {
+                        span.className = 'incorrect';
+                        if (index >= errors) {
+                            errors++;
+                        }
+                        isCorrect = false;
+                    }
+                } else {
+                    span.className = '';
+                }
+            });
+
+            wpmDisplay.textContent = calculateWPM();
+            accuracyDisplay.textContent = calculateAccuracy() + '%';
+            errorsDisplay.textContent = errors;
+
+            updateProgressBar();
+
+            const nextChar = getNextChar();
+            highlightKeyboardKey(nextChar);
+
+            if (currentInput === currentText) {
+                if (isCorrect) {
+                    endTest("Congratulations! You've completed the paragraph.");
+                } else {
+                    endTest("You've completed the paragraph, but there are errors.");
+                }
+            } else if (currentInput.length > currentText.length) {
+                inputField.value = currentInput.substring(0, currentText.length);
+            }
+        });
+
+        startButton.addEventListener('click', async () => {
+            startButton.style.display = 'none';
+            restartButton.style.display = 'inline-block';
+            await preloadNextParagraph();
+            resetTest();
+            startTimer();
+        });
+
+        stopButton.addEventListener('click', () => {
+            stopTest();
+        });
+
+        restartButton.addEventListener('click', () => {
+            clearInterval(timer);
+            resetTest();
+            startTimer();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            highlightKeyboardKey(event.key);
+        });
+
+        document.addEventListener('keyup', () => {
+            highlightKeyboardKey('');
+        });
+
+        displayHighScores();
+        textDisplay.textContent = 'Click "Start" to begin the typing test.';
+    </script>
+</body>
+</html>

@@ -363,6 +363,7 @@ footer {
     .about-title {
         flex: none;
         width: 80%;
+        text-align: center;
         height: auto;
         margin-top: 2rem;
         border-radius: 40vh 40vh 0 0;

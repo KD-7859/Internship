@@ -21,3 +21,8 @@ function SendMail(event) {
 
     return false; // Prevent the form from submitting
 }
+
+function myFunction() {
+    var x = document.getElementById("myEmail").pattern;
+    document.getElementById("demo").innerHTML = x;
+  }
